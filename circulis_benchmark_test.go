@@ -1,3 +1,7 @@
+// Benchmark tests adapted from https://github.com/smallnest/ringbuffer
+// Original author: smallnest
+// Used under MIT license for comparison and validation purposes.
+
 package circulis
 
 import (

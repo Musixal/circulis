@@ -3,6 +3,7 @@ package circulis
 import (
 	"strings"
 	"testing"
+	"time"
 )
 
 func BenchmarkRingBuffer_Sync(b *testing.B) {
@@ -24,7 +25,10 @@ func BenchmarkRingBuffer_AsyncRead(b *testing.B) {
 
 	go func() {
 		for {
-			rb.Read(buf)
+			_, err := rb.Read(buf)
+			if err == ErrEmpty {
+				time.Sleep(1 * time.Nanosecond)
+			}
 		}
 	}()
 

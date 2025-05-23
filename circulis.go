@@ -39,7 +39,7 @@ func New(capacity int) *Circulis {
 	c := &Circulis{
 		buf:      make([]byte, cap2),
 		mask:     cap2 - 1,
-		blocking: true,
+		blocking: false,
 	}
 	c.notEmpty = sync.NewCond(&c.mu)
 	c.notFull = sync.NewCond(&c.mu)
